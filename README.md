@@ -1,3 +1,40 @@
+# 👋 About Me  
+
+I am currently building **AI-driven Agentic tools** that solve critical business challenges and **automate enterprise workflows**. My journey into AI began with a deep fascination for **LLMs and their inner workings**, which led me to explore and master them. Since then, **teaching machines to learn** has become my passion. I started with Traditional Machine Learning, gradually transitioning into **Deep Learning with a specialization in NLP**. I have further strengthened my expertise through coursework at **Georgia Institute of Technology**, completing:  
+- **CS 7641:** Machine Learning  
+- **CS 7643:** Deep Learning 
+
+Now, I focus on **developing intelligent AI systems** leveraging **LLMs, RAG, and automation** to drive real-world impact.  
+
+# 🚀 Professional Experience  
+
+## I18n Keys Translation Automation System  
+I developed an end-to-end AI tool automating the translation of I18N keys using GPT and Retrieval-Augmented Generation (RAG). This system:  
+
+- **Handles translation across 20+ languages**  
+- **Significantly reduces time and costs to company** compared to traditional methods  
+- **Implements a comprehensive workflow**, including:  
+  - **Preprocessing of localization keys**  
+  - **RAG system preparation** with relevant context  
+  - **Custom GPT assistants** for each language optimized for translation tasks  
+  - **Rigorous validation** using both automated metrics and human verification  
+- **Achieved 91% accuracy** through human validation testing  
+- **Evaluates translation quality using advanced NLP metrics** (BLEU, COMET scores)  
+
+## Test Case Generation Agent & Product Knowledge Chatbot  
+I developed an AI chatbot powered by ChatGPT to automate test case generation, identify use-case dependencies, and retrieve relevant test cases using similarity search from ChromaDB. Additionally, the chatbot provides instant insights about the product by answering user queries. This system:  
+
+- **Generates test cases dynamically** based on system changes
+- **Identifies dependencies** between test cases and modules  
+- **Retrieves relevant test cases** using similarity search for efficient validation  
+- **Allows users to ask product-related questions** and get AI-powered responses  
+- **Significantly reduces manual effort** while enhancing test coverage and product understanding  
+- **Preprocessing of test case data** for structured retrieval  
+- **Retrieval-Augmented Generation (RAG)** for enhanced contextual accuracy  
+- **Custom GPT-based assistants** fine-tuned for test case generation and product Q&A  
+
+# 🚀 Personal Projects  
+
 # **1. TamilGPT** - [Link](https://github.com/harish-raj-t/ML_And_DeepLearning/blob/main/Mini%20LLMs/miniTamilLLM.ipynb)  
 
 **TamilGPT** is a **decoder-only GPT model** trained on a Tamil language dataset. It is optimized for Tamil text generation, utilizing a **SentencePiece UUM tokenizer** and a **context length of 16 tokens**. The model is based on the **transformer architecture**, leveraging self-attention mechanisms to generate text effectively.  
