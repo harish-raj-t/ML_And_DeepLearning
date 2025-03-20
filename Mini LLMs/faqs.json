@@ -1,0 +1,478 @@
+[
+    {
+        "question": "When automatic patch deployment is applied to a OU, and a new computer is added to a OU, will the task pick the newly added computer?",
+        "answer": "Yes, all the configurations applied to the OU will be automatically applied to the newly added computers."
+    },
+    {
+        "question": "When you initiate patch scanning, does it start scanning all the computers at a same time or does it scan them incrementally?",
+        "answer": "Scanning will be initiated incrementally in order to avoid bandwidth bottlenecks."
+    },
+    {
+        "question": "I need to deploy the newest Mozilla updates to certain computers but exclude some, how do I do this?",
+        "answer": "You can create a custom group with the computers which you wanted to exclude. Decline the application from, Patch Mgmt -> Decline Patch -> Decline Patch for Group -> specify the application."
+    },
+    {
+        "question": "How would I automatically download and deploy the latest patch updates as they are released?",
+        "answer": "You should configure “Automated Patch Deployment Task” and ensure that the schedule is run every day to keep your computers up-to-date."
+    },
+    {
+        "question": "How to ensure the individual computers do not download patches from the internet? I do not want any 3rd party application in our organization to take the updates from the internet?",
+        "answer": "You can see the “Installed Time”, against the patch, if it is installed using Endpoint Central. If you do not find the “Installed Time”, then it could be patched using automatic updates. In such cases, you will have to disable auto-updates from, Configurations -> Script Repository ->Templates tab -> Search for AutomaticUpdates.exe -> add to repository. Create a configuration, select the target computers and deploy it."
+    },
+    {
+        "question": "When do you remove the old setup after server migration?",
+        "answer": "Do not remove the old setup until all the agents start reporting to the new setup.The agents and the distribution servers, during their next contact, will pick up the details of the new server and start communicating with the new server subsequently. You will need to run the Endpoint Central Servers at both the installations till all the agents start reporting to the new server. Once all the agents have contacted the new server, you can then uninstall the old server."
+    },
+    {
+        "question": "Do you have to reapply the server license after server migration?",
+        "answer": "You need not reapply the server license after server migration."
+    },
+    {
+        "question": "Which type of software repository is recommended for computers in remote location; is it a network share or HTTP share?",
+        "answer": "We would recommend using a HTTP share as the software repository for computers in the remote location. This would ensure that all the computers can reach the software repository easily."
+    },
+    {
+        "question": "Why must I specify \"Run As\" when Endpoint Central already has the credentials stored under Agent > Scope of Management > Computers>Edit Credentials?",
+        "answer": "\"Run As\" is the option which is used for the applications that need to be installed as a different User. Since the product supports Multiple Active Directory domains and work-groups, we need to associate the credential supplied in SoM with the corresponding Domain or work-group.  In order to handle such scenarios, the product gets the additional user name and password for RunAs.  However, if \"Run As\" is not specified then system credentials will be taken by default."
+    },
+    {
+        "question": "Why must I specify the MSI Root Path? It is identical to the MSI file name with network path.",
+        "answer": "The MSI Root Path is mainly used for the following:\n\nCopying the files to the client computer.\nSetting the working directory for installation.\n\nIf the MSI file is browsed and chosen then the MSI Root Path is automatically taken.  It becomes mandatory only when the MSI file name with network path is manually entered."
+    },
+    {
+        "question": "The configuration seems to have been deployed successfully but the application is not installed on the target machines.  How do I resolve this?",
+        "answer": "To make sure that there are no issues with the created software package, try deploying it via the command line.\nThe application to be installed can be user or system specific. Ensure that you have deployed the right configuration type (user/computer based) accordingly.\nThe application may need admin rights to install, so try deploying it with the RUN AS ADMIN option."
+    },
+    {
+        "question": "Can I install a software application if the User Account Control (UAC) setting is enabled?",
+        "answer": "Yes, you can install a software application when the UAC feature is enabled if you are not required to enter information during installation. However, if you have to enter information during the installation of a software application, you must create a user configuration without selecting the Run As option. When you use the Run As option in a user configuration, use the Default Administrator account."
+    },
+    {
+        "question": "Can I extend my file upload limit beyond 12 GB in the Software Deployment manual package creation?",
+        "answer": "Yes, you can extend your file upload limit beyond 12 GB in an On-Premise setup. Contact endpointcentral-support@manageengine.com to extend your file upload limit."
+    },
+    {
+        "question": "With adding or managing software licenses, I have ran into issues with tracking the license count. Some of the software like MS Office consists of several versions. Is there any way to consolidate all these software versions using Endpoint Central and allocate the licenses in one place?",
+        "answer": "Yes, you can use Endpoint Central to group the software based on versions. \"Group Software\" is the feature which allows you to group different versions of same software for better visibility and license management."
+    },
+    {
+        "question": "If a software is rejected as prohibited software, when a user asks for permission to use it, and the permission is granted, can that rejection be revoked in the application?",
+        "answer": "If a software was rejected, then the software would be removed from the target computer based on the auto-uninstall policy specified. However, if the admin again approves it, it can be reinstalled and won't be removed. Lets imagine there is a delay in approval. So, it would be automatically uninstalled if it was not approved till the given threshold day count. If the uninstall threshold is yet to reach then the software would be available."
+    },
+    {
+        "question": "When you add a program to the prohibited software list, does it take all the version of the software into account? Do I need to update the prohibited software list every time a new version is released?",
+        "answer": "If the new version of program is automatically upgraded then it is not required to add the new version into prohibited list. Else, you will have to add it manually. Create a software group with all versions of the particular software and include the software group to the prohibited software list. It also provides a great way to have software version control in the network by not allowing other versions of same software."
+    },
+    {
+        "question": "If the software that you want to be prohibited is not already installed on your network, how can I block it using Endpoint Central?",
+        "answer": "You can use \"Block Executable\", to block the application/software in a pro-active manner. However, the product positions this feature as a procedure to block non-standard executable which are used in your network, It would help you to prevent your network from data leak and other security threats."
+    },
+    {
+        "question": "If I want to disable office 2013 what about 'outlook' as everyone uses outlook for as their business mails?",
+        "answer": "You can choose to disable specific applications using the 'Block executable'. This allows you to block only the specific required application. For example, if, you want to block Microsoft Excel you need to do it by mentioning its specific name, excel.exe. This doesn't prevent you from using word.exe. Similarly, Outlook continuous to work unless it is specifically blocked."
+    },
+    {
+        "question": "What are the system requirements for Endpoint Central?",
+        "answer": "The target market for Endpoint Central MSP are the Managed Service Providers (MSP's) who would offer Desktop Management services for their customers. It can be used by MSPs of any size viz. Small, Medium or Large MSPs. You can manage up to 10000 computers with a single installation.\nFor detailed information, refer System Requirements.\nThe system requirements when using Endpoint Central Cloud include the following:\n\nHardware requirements for Distribution servers and agents\nSoftware requirements for Distribution servers\nSupported Browsers\n\nHardware Requirements\nThe hardware requirements for distribution servers include the following:\n\n\n\nNo. of Computers Managed Using the Distribution Server\nProcessor Information\nRAM Size\nHard Disk Space\n\n\n1 to 250\nIntel Core i3 (2 core/4 thread) 2.0 Ghz  3 MB cache\n2 GB\n10 GB*\n\n\n251 to 500\nIntel Core i3 (2 core/4 thread) 2.0 Ghz  3 MB cache\n4 GB\n20 GB*\n\n\n501 to 1000\nIntel Core i5 (4 core/4 thread) 2.3 GHz. 6 MB cache\n4 GB\n30 GB*\n\n\n\n*May increase depending on the number of software applications and patches that are deployed\nHardware Requirements for Agents\nThe hardware requirements for agents include the following:\n\n\n\nHardware\nRecommendations\n\n\nProcessors\nIntel Pentium\n\n\nProcessor Speed\n1.0 GHz\n\n\nRAM Size\n512 MB\n\n\nHard Disk Space\n100 MB*\n\n\n\n*May increase dynamically depending on the operations performed on the client computer\nSoftware Requirements\nThis section gives you information about the software requirements for distribution servers, Endpoint Central servers and agents.\nSupported OS for Distribution Servers\n\nWindows 7\nWindows 8\nWindows 8.1\nWindows 10\nWindows Server 2003\nWindows Server 2003 R2\nWindows Server 2008*\nWindows Server 2008 R2*\nWindows Server 2012\nWindows Server 2012 R2*\nWindows Server 2016*\nWindows Server 2019*\n\nSupported OS for agents\n\n\n\nWindows OS\nWindows Server OS\nMac OS\n\n\nWindows 10\nWindows server 2016\n10.15\n\n\nWindows 8.1\nWindows server 2012 R2\n10.14\n\n\nWindows 8\nWindows server 2012\n10.13\n\n\nWindows 7\nWindows server 2008 R2\n10.12\n\n\nWindows Vista\nWindows server 2008\n10.11\n\n\n \nWindows server 2003 R2\n10.10\n\n\n \nWindows server 2003\n10.9\n\n\n \n \n10.8\n\n\n\nA TLS version of 1.2 and above is required for the legacy devices to be managed using Endpoint Central Cloud.\nSupported Browsers\nYou are required to install any of the following browsers on your computer to access the web console:\n\nMicrosoft Internet Explorer 10 and later versions\nMozilla Firefox 44 and later versions\nGoogle Chrome 47 and later versions\n\nNote: The screen resolution should be 1280 x 1024 pixels or higher."
+    },
+    {
+        "question": "Which operating systems does Endpoint Central support?",
+        "answer": "You can use Endpoint Central to manage the computers running on the below mentioned operating systems:\n\nFor managing mobile devices:\n\nAndroid: Android devices running on version 4.0 or above\niOS (incl. iPhone, iPad and iPod): iOS devices running on version 4.0 or above\nWindows Smartphones: Devices running on version Windows Phone 8.1 or above\nWindows laptops (incl. Surface Hubs and Surface Pros): Devices running on Windows 10\nChrome OS: Devices running on version 57.0 or later\ntvOS: Devices running on version 7.0 or above\nmacOS: Devices running on version 10.7 or later\n\nNote: A TLS version of 1.2 and above is required for the legacy devices to be managed using Endpoint Central Cloud."
+    },
+    {
+        "question": "Can Endpoint Central UI be localized to other languages?",
+        "answer": "Yes, the user interface in addition to the default English language, can be localized to Chinese, German and Japanese languages. To change the language of the UI, click Personalize from top-right, choose the preferred language and save."
+    },
+    {
+        "question": "What is the difference between the various editions of Endpoint Central?",
+        "answer": "It is available in four editions:\n\nUEM Edition: This edition includes all the features of Enterprise edition, along with Mobile Device Management, Modern Management for Windows 11 devices, and OS Imaging and Deployment capability.\nEnterprise Edition: This edition includes all the features of Professional edition, along with bandwidth management feature for remote offices with distribution server, self service portal, software metering, license management, etc..\nProfessional Edition: This edition equips system administrators with basic patch management, software deployment, and asset management capabilities. Additional features such as configurations, Windows system tools, etc., are also available.\nFree Edition: This edition allows you to manage upto 25 desktops and 25 mobile devices for free. You can upgrade to UEM, enterprise, or professional edition.\nAdd-ons: OS Deployment, Secure Gatewar Server, Failover Server, and Multilanguage Support add-ons are available for all editions.\nFor all editions, the following add-ons are available:\nMobile Device Management\nOS Deployment\nSecure Gateway Server\nFailover Server\nMultilanguage Support\n\nFor detailed comparison, refer the edition comparison matrix"
+    },
+    {
+        "question": "Do I have to write scripts to use Endpoint Central?",
+        "answer": "No, you do not have to write scripts to use the predefined configurations provided. You have to select a configuration, specify the required inputs, and deploy it."
+    },
+    {
+        "question": "What is Scope of Management (SoM)?",
+        "answer": "Scope of Management is a feature that is used to specify which computers you can manage using Endpoint Central. You can add and manage computers that are from an Active Directory, a workgroup or any other directory service like Novell eDirectory. The computers can either be in the same Local Area Network (LAN) or in a remote location connected through a Virtual Private Network (VPN) connection or through the Internet. For more information, see Defining the Scope of Management."
+    },
+    {
+        "question": "Can I group and define configurations or do I have to define them individually?",
+        "answer": "Endpoint Central has predefined configurations available for users and computers. These configurations can be grouped and defined into collections if they are meant for the same user or computer. However, if they are meant for individual users or computers, they have to be defined and deployed individually."
+    },
+    {
+        "question": "When and how do configurations get applied to computers and users?",
+        "answer": "Every configuration that is applied to computers and users will be applied in the following scenarios:\n\nUser logon or system startup: All user configurations, except the Custom Script configuration, are applied when a user logs on or when a system is started.\nSystem startup or shutdown or user logon or logoff: The Custom Script configuration is applied when a user logs on or logs off. This also takes place when a computer is switched on or switched off.\n90-minute refresh cycle\n\nLet us see few examples:\nA configuration is deployed to computers and users, to block USB devices,\nIf the computer is turned off -  This configuration will get applied during the computer start up and the USB access will be blocked.\nIf the computer is turned on - This configuration will get applied during the next refresh cycle, when the agent communicates with the product server. Assuming that a USB device was already plugged in and used in the computer, the access will be denied as soon the configuration gets applied.\nIf the User has logged off - This configuration will get applied to the user's profile when the user logs on to the computer. So that the particular user will not have permission to access USB devices.\nIf the User has logged on - This configuration will get applied during the subsequent refresh cycle. Assuming that the user has already plugged in a USB device and has been using the device, the access will be denied after the configuration gets applied."
+    },
+    {
+        "question": "How do I access the User Interface (UI) of Endpoint Central from a remote location?",
+        "answer": "To access the UI from a remote location, follow the steps given below:\n\nOpen a supported browser\nEnter http://<host name>:<port number> in the address bar\n\nNote: Here <host name> refers to the name / IP Address of the machine running Endpoint Central, <port number> refers to the port where the product is started, the default being 8020. For example, 192.168.100.110:8020.\nPress Enter\n\nYou can now login to the Endpoint Central UI."
+    },
+    {
+        "question": "What do I use the Define Target feature for?",
+        "answer": "The Define Target feature is used to identify targets, also called users or computers, to apply configurations to. The targets can be all the users or computers belonging to a site, domain, Organizational Unit (OU) or a group. They can also be a specific user or computer. For more information, see Defining Targets."
+    },
+    {
+        "question": "My free trial expired before I could complete my evaluation of Endpoint Central. Can I receive an extension?",
+        "answer": "Customer satisfaction is our primary goal. During the trial period of 30 days, you can manage an unlimited number of desktops using the product. After the trial period is over, it automatically switches to the free edition using which you can manage only 25 desktops and 25 mobile devices.\nHowever, if your trial period is complete and you want to use the software application to manage more than 25 computers and 25 mobiles, contact us. You will receive a temporary license with a validity period to suit your requirements. The transition from the free edition of Endpoint Central to the temporarily-licensed edition is smooth with no loss of data or configurations."
+    },
+    {
+        "question": "How is Endpoint Central licensed?",
+        "answer": "Endpoint Central is licensed on an annual-subscription basis depending on the number of computers you want to manage. You can get the price for a specific number of desktops from our online store. You may also buy a permanent license by paying an one-time fee. Contact us with the following details to get a quote from our sales team:\n\nNumber of computers you want to manage\nEdition that you are interested in buying"
+    },
+    {
+        "question": "Why are configurations in Endpoint Central created using a Web interface?",
+        "answer": "Endpoint Central, with its Web-based interface, enables desktop administrators to access the application from anywhere within a network to complete various tasks; for example, to create configurations. This facilitates easy management of computers without being required to be present in any specific location."
+    },
+    {
+        "question": "Which ports are used by the Endpoint Central application?",
+        "answer": "You must open the following ports for effective communication between an agent, the product server and the distribution server:\n\nEndpoint Central Cloud exclusively uses TLS 1.2 by default to ensure secure communications. In on-premise environments, Endpoint Central supports TLS 1.0, TLS 1.1, and TLS 1.2 protocols."
+    },
+    {
+        "question": "Which database does Endpoint Central support to store data?",
+        "answer": "Endpoint Central supports PGSQL and MS SQL database to store data."
+    },
+    {
+        "question": "Which Web server does Endpoint Central use?",
+        "answer": "It uses the Apache and Nginx web server."
+    },
+    {
+        "question": "I have an Internet Information Services (IIS) application installed in my computer. Can I configure the settings in Endpoint Central to use this IIS instead of its own?",
+        "answer": "No, currently Endpoint Central does not support IIS."
+    },
+    {
+        "question": "Will new computers that are added in the domain receive configurations automatically once they check in with Endpoint Central?",
+        "answer": "Yes, computers that are newly added in the domain will receive all the deployed configurations automatically when they check in with the product Server."
+    },
+    {
+        "question": "Does Endpoint Central support Home editions of Windows OS like Windows 7 Home Premium?",
+        "answer": "All the features other than patch management works effectively in home edition of windows operating system."
+    },
+    {
+        "question": "Do we have any option for multiple active directory inputs in Endpoint Central?",
+        "answer": "Yes, We accept multiple active directory inputs."
+    },
+    {
+        "question": "How will the Endpoint Central agent reach the Distribution Server if the port number used for their communication has been changed?",
+        "answer": "When the agents of the remote location are unable to contact the Distribution Server, they contact the Endpoint Central Server directly during the next 90 minutes refresh interval. They receive the modified port numbers of the Distribution Server and communicates with it henceforth."
+    },
+    {
+        "question": "What is IP Scope and What are its advantages?",
+        "answer": "Endpoint Central has different agents for different locations, for example a local office agent will not be the same as the remote office agent. Similarly every remote office has different agents as well. When you are managing computers one or more remote locations, you can have a defined set of IP ranges for different offices. This enables the product Server to identify the agents with respect to the IP range. So whenever a computer is moved from a local office to a remote location,  IP scope is used  to automatically detect and deploy the respective WAN agent. Endpoint Central will check for the change in the IP address periodically and will deploy the appropriate agents whenever a change is detected."
+    },
+    {
+        "question": "What will happen if the agents are unable to reach the Endpoint Central Server to report the status after performing any task?",
+        "answer": "Agents will report the status to the Endpoint Central server after performing every task. In case if the Endpoint Central Server is not reachable, then the agents will update the status during their subsequent refresh interval."
+    },
+    {
+        "question": "Why does Endpoint Central require a domain admin account, and can it be configured with an account with limited privileges?",
+        "answer": "The account added under Admin > Global settings > Domains on Endpoint Central will be used for the following purposes:\n\n\nSyncing with Active Directory (AD):This is necessary to gather information such as computers, Organizational Units (OUs), users, and other data required for generating AD Reports (accessible under the Reports tab).\n\n\n\n\n\nDuring configurations or software deployment tasks, if User Account Control (UAC) blocks the execution process on the target computers, this admin account helps override UAC when the agent computers are on the domain.\n\n\n\n\nThe account will facilitate push installation of agents from the console. While a standard Domain user account (without Admin privileges) can be used to sync with AD and gather data as mentioned, certain access permissions (usually possessed by domain admin account) are required to remotely deploy agents to target systems. If manual installation of agents or alternative agent install methods like via Group Policy Object (GPO), System Center Configuration Manager (SCCM), or other deployment tools are preferred, a domain user account without Admin privileges can be added solely for syncing with AD to obtain details for AD reports."
+    },
+    {
+        "question": "Is Endpoint Central capable of managing Virtual computers?",
+        "answer": "Yes, it is capable of managing virtual computers."
+    },
+    {
+        "question": "How to install Endpoint Central agent in a different drive?",
+        "answer": "Download the agent and navigate to the downloaded location using command prompt. For example, if you wanted to download the agent in D drive, execute the below mentioned command.\nDesktopCentralAgent.msi TARGETDIR=\"D:\\DesktopCentral_Agent\\\" REBOOT=ReallySuppress if you are using Endpoint Central below 11.2.2309.01 or UEMSAgent.msi TARGETDIR=\"D:\\UEMS_Agent\\\" REBOOT=ReallySuppress if you are using Endpoint Central 11.2.2309.01 and above"
+    },
+    {
+        "question": "Why is UES Agent service running in my machine?",
+        "answer": "The UES agent runs in the background as part of Endpoint Central when a user subscribes to the Enterprise edition/UEM edition/Security edition. The UES Agent service is necessary for the proper functioning of secure usb configuration and Device Control policies.\nEven if the above mentioned policies are not applied, the UES Agent service will be running in the background in idle state."
+    },
+    {
+        "question": "what is \"dcagentupdater\" scheduled task?",
+        "answer": "This is a scheduled task created in the agents. This task runs on the client computer and scheduled every hour to ensure that the agent version is up to date."
+    },
+    {
+        "question": "Is it possible to use Endpoint Central to manage computers without installing agents?",
+        "answer": "No, Endpoint Central needs agents to perform any desktop management activity."
+    },
+    {
+        "question": "Is it mandatory for all the managed computers have connection to the internet?",
+        "answer": "No, it is not necessary for all the managed computers to have internet connection. However, the product server would need connection to the internet in order to download the patches and software applications from the respective vendors website."
+    },
+    {
+        "question": "Can I use Endpoint Central to manage computers that does not belong to a domain?",
+        "answer": "Yes, it can be used to manage computers even if they do not belong to a domain."
+    },
+    {
+        "question": "Which exe should I download, a 32-bit or 64-bit version?",
+        "answer": "You can choose to download 32-bit or 64-bit based on your OS architecture."
+    },
+    {
+        "question": "Why should I provide credentials with admin privileges?",
+        "answer": "Credentials that have admin privileges need to be specified for carrying out certain activities in Endpoint Central :\n\n\n\nAcquired access\nOperations performed\n\n\nRegistry access\nFor executing all the agent operations\n\n\nFull control of file/folder\nTo read/write agent details for execution of agent operations\n\n\nNetwork share access\nFor deploying configurations\n\n\nLogin access\nFor installation/uninstallation of agents\n\n\nRemote access\nFor troubleshooting computers remotely\n\n\nAccess to install/uninstall software\nFor installation/uninstallation of software applications\n\n\nAccess to WMI\nFor fetching inventory details"
+    },
+    {
+        "question": "How to remove a computer that has been taken offline?",
+        "answer": "To remove a computer that has been taken offline, navigate to Admin>>Scope of Management>>Computers, select the computers that have been taken offline, and click on \"Remove Computer(s)\""
+    },
+    {
+        "question": "How to manage a network with multiple admin credentials?",
+        "answer": "With the credential manager, multiple credentials can be stored and used accordingly for different actions. Click here to know more about credentials manager."
+    },
+    {
+        "question": "What are the minimum rights/privileges required to make any domain-related changes using Endpoint Central?",
+        "answer": "Domain Admin credentials are required to make any Domain-related changes. You can also use the Local Admin, if it is same for all the computers in that domain."
+    },
+    {
+        "question": "Can I manage two computers with the same name but situated in different domains using Endpoint Central?",
+        "answer": "Yes, this can be achieved. Once the individual domains are added in Endpoint Central, all available computers can be added and managed, even if they have similar names."
+    },
+    {
+        "question": "Does a replication policy and network settings serve the same purpose once configured?",
+        "answer": "Replication policies can be used to optimize bandwidth consumption when data is being replicated from the central server to the distribution servers. Network settings on the other hand, can be configured to limit the central server's maximum outgoing bandwidth during patch/software deployments to managed endpoints."
+    },
+    {
+        "question": "What happens when my trial version of Endpoint Central expires?",
+        "answer": "Endpoint Central provides a free 30-day trial of the Enterprise edition, using which you can manage unlimited endpoints for 30 days. After the trial period is over, Endpoint Central automatically switches to the free edition using which you can manage only 25 desktops and 25 mobile devices. Once you move to the licensed editions (Free, Professional, Enterprise, UEM), you will only have access to the features limited to the particular edition. Features will also vary between the same editions of Endpoint Central On-premise and Endpoint Central Cloud versions which are detailed here."
+    },
+    {
+        "question": "How are licenses consumed in the UEM edition of Endpoint Central?",
+        "answer": "The license consumption count is based on the number of endpoints managed. When the Endpoint Central agent/MDM profile is installed on an endpoint, it automatically detects the MAC address, and is accounted as a license consumed.\nLet's consider an organization that has bought 1000 Endpoint Central UEM licenses, and they're looking to manage workstations (including OS imaging and deployment) and mobile devices. Assume they have to manage\n\n100 workstations (with OS deployment)\n200 workstations (without OS deployment)\n200 mobile devices\n\nIn this scenario, a total of 500 licenses are consumed, with the other 500 still remaining.\nIf the org decides to retire 100 devices, they can uninstall the agent and remove those machines from the Endpoint Central server. By doing so, these 100 licenses can be reused to manage other devices. Now, there are 600 licenses left for the org to use. However, OS deployment cannot be performed on these retired machines."
+    },
+    {
+        "question": "I manage 5000 desktops and 2000 mobile devices in my network. I have a need for OS imaging and deployment on 1000 computers. How many UEM licenses should I purchase altogether?",
+        "answer": "One UEM license accounts for the management of a single endpoint, be it desktop or a mobile device. The license that you purchase for managing desktops can be used for OS imaging and deployment. So, you do not require additional license for this purpose. You need to purchase 7000 UEM licenses for managing the endpoints in your network."
+    },
+    {
+        "question": "I have iOS, Android and Windows devices in my network. Is it mandatory to hold an MDM add-on apart from UEM license?",
+        "answer": "No, it is not required to purchase the add-on. Apart from Windows machines, iOS and Android devices can also be managed using UEM licenses."
+    },
+    {
+        "question": "I use Enterprise edition currently. Can I upgrade to UEM edition right away or should I wait until renewal of my license?",
+        "answer": "No, you need not wait until your renewal. Refer this document for upgrading from Enterprise edition to UEM edition."
+    },
+    {
+        "question": "Which ports must I open to use the Remote Control feature?",
+        "answer": "You must open the the following ports to use the Remote Control feature:\n\n8443 for secure connections\n8444 for normal connections\n\nBy default, the Remote Control feature uses a secure connection. These ports have to be opened on the Endpoint Central server."
+    },
+    {
+        "question": "Which ports must I open to use the File Transfer feature during a remote control session?",
+        "answer": "File Transfer and remote control uses the same port:\n\n8443 for secure communication\n8444 in case of normal communication\n\nThese ports have to be opened on the computer on which the Endpoint Central server is installed."
+    },
+    {
+        "question": "Can I view multiple monitors of a remote computer simultaneously?",
+        "answer": "Yes, you can view multiple monitors of a remote computer simultaneously by using the Remote Control feature. You can switch between monitors using the multi-monitor icon available in the Active X viewer. Viewing multiple monitors simultaneously is currently not supported in a Java viewer. For more information, see How to switch between multiple monitors during a remote session?"
+    },
+    {
+        "question": "The UI-rendering while using the Remote Control feature is slow. How can I improve its speed?",
+        "answer": "You can set the compression level to Fast, when using the Remote Control feature, to improve the page-rendering speed. The bandwidth consumption will be comparatively higher when compared to best compression level, however the page-rendering will be comparatively faster."
+    },
+    {
+        "question": "What is the difference between Fast and Best Compression levels?",
+        "answer": "When you set the compression level to Fast, the compression ratio is lower, resulting in an increase in the speed of the rendering of the UI. This is recommended when the computer that you are connecting remotely to is in the same LAN as the computer you are connecting from.\nWhen you set the compression level to Best, the compression ratio is higher, resulting in a decrease in the consumption of the bandwidth. However, the rendering of the UI will be comparatively slower. This setting is recommended when the computer that you are connecting to remotely is at a different geographical location."
+    },
+    {
+        "question": "On which browsers can I use the Remote Control feature?",
+        "answer": "You can use the Remote Control feature on the following browsers:\n\nInternet Explorer\nMozilla Firefox\nGoogle Chrome"
+    },
+    {
+        "question": "Is it possible for multiple users to login remotely to a computer at the same time?",
+        "answer": "Yes, it is possible for multiple users to login remotely to a computer at the same time. However, only one of the users who has logged in can take control. The other users can only view the changes that are being made."
+    },
+    {
+        "question": "How do I lock a keyboard or a mouse or blacken the display on a remote computer?",
+        "answer": "You can lock a keyboard or a mouse to ensure that you can make changes effectively. To lock the remote computers keyboard and mouse, click the Lock Keyboard/Mouse icon from the viewer.\nSimilarly, you can blacken the monitor of a remote computer when you do not want the user to view the changes that you are making. To blacken the remote monitor, click on the Blacken Monitor icon from the viewer."
+    },
+    {
+        "question": "What will happen when I take a remote session of a Virtual Computer?",
+        "answer": "When you take a remote session of a virtual computer, you will result in viewing the screen of the physical machine in which the remote session is hosted."
+    },
+    {
+        "question": "Do you support Mac machines?",
+        "answer": "Yes, Endpoint Central supports managing computers running Mac operating systems."
+    },
+    {
+        "question": "How to locate the file where the remote control session is recorded?",
+        "answer": "To locate the file where a remote control session is recorded, first navigate to the directory where the Endpoint Central server is installed. Then, go to \n\n<Installed_Directory>\\DesktopCentral_Server\\webapps\\DesktopCentral\\server-data\\<customerID>\\rds\\scr-rec\nExtract the zip file in this location to view the recorded video clip."
+    },
+    {
+        "question": "How to clear chat history?",
+        "answer": "To clear chat history follow the steps mentioned below;\n\nClick Tools Tab and select Chat\nUnder History click on Chat History Settings\nSpecify the number of days to maintain the chat history, so that the previous chat history will be deleted."
+    },
+    {
+        "question": "What will happen if port # 8022 is already in use?",
+        "answer": "If port # 8022 is already in use, you can use configure chat in other ports. To change the port used by chat, follow the steps mentioned below;\nTo change the port number after the Endpoint Central server is installed, follow the steps given below:\n\nStop the Endpoint Central server.\nClick start\nPoint to Programs>ManageEngine Endpoint Central\nClick Stop DesktopCentral\nOpen the websettings.conf located in <Install_Dir>\\DesktopCentral_Server\\conf. For\n    example, C:\\Program Files\\DesktopCentral_Server\\conf.\nChange the port numbers of the following key with the required values:\nhttpnio.port\nSave the file and close it\nStart the Endpoint Central server.\nClick start\nPoint to Programs>ManageEngine Endpoint Central\nClick Start DesktopCentral\n\nYou can now connect the chat sessions, using the Endpoint Central server."
+    },
+    {
+        "question": "Under which circumstances will chat session fail?",
+        "answer": "Chat session will fail in the following scenarios;\n\nAgent not reachable in the client computer\nIf the user is inactive in the computer\nIf the \"chat connection\" session is time-out"
+    },
+    {
+        "question": "What will happen when we try to initiate a chat session with the user who is inactive?",
+        "answer": "You will not be able to chat with the user if the user is offline."
+    },
+    {
+        "question": "How often will the logged on User names be refreshed?",
+        "answer": "The list of user names will be updated in three scenarios as specified below.\n\nDuring 90 minutes refresh interval while the agent communicates with the server.\nDuring every user log on if it is configured in the User Logon Settings.\nDuring every user logoff."
+    },
+    {
+        "question": "After integrating Endpoint Central with ServiceDesk Plus, is it necessary to use both their agents?",
+        "answer": "With ServiceDesk Plus's agent you can get asset data and this can also be achieved with Endpoint Central agent in addition to other activities such as, raise help desk tickets from Endpoint Central tray icon, perform Desktop Management activities like patch management, software deployment, remote control etc., Thus you can uninstall ServiceDesk Plus's agent and can install Endpoint Central's agent."
+    },
+    {
+        "question": "I have license to manage 1000 nodes in ServiceDesk Plus and have purchased license to manage 500 computers in Endpoint Central. How does integration work in this scenario?",
+        "answer": "Out of 1000 nodes, say you have 700 computers, you can mange only up-to 500 computers in the integrated console. For smooth integration, the license count of both ServerDesk Plus and Endpoint central should match with the number of computers you manage."
+    },
+    {
+        "question": "What are the Operating Systems supported by OS Deployment add-on?",
+        "answer": "Work station OS\n\nWindows 11\nWindows 10\nWindows 8.1\nWindows 8\nWindows 7\nWindows Vista\nWindows XP\nServer OS\n\nServer OS\n\nWindows Server 2016\nWindows Server 2012 R2\nWindows Server 2012\nWindows Server 2008 R2\nWindows Server 2008\nWindows Server 2003 R2\nWindows Server 2003"
+    },
+    {
+        "question": "What are the ports used by OS Deployment?",
+        "answer": "Websocket port - 8334(HTTPS), 8443(HTTP)\nPXE port - 69 (To configure DHCP)"
+    },
+    {
+        "question": "Does OS Deployment support Windows Surface Pro?",
+        "answer": "Yes, OS imaging and deployment is supported on Windows Surface Pro machines."
+    },
+    {
+        "question": "Why is WinPE media required?",
+        "answer": "WinPE media is required to boot the machines in to Windows Pre-installation environment to perform deployment and offline imaging."
+    },
+    {
+        "question": "Which versions of WinPE media are supported for OS Imaging and Deployment?",
+        "answer": "Windows PE 10.0 Media - Windows 10, Windows 8.1, Windows Server 2012 R2, Windows 8, Windows Server 2012\nWindows PE 5.0 Media - Windows 10, Windows 8.1, Windows Server 2012 R2, Windows 8, Windows Server 2012\nWindows PE 4.0 Media - Windows 10, Windows 8, Windows Server 2012, Windows 7, Windows Server 2008 R2, Windows Vista, Windows Server 2008\nWindows PE 3.0 Media - Windows 7, Windows Server 2008 R2, Windows Vista, & Windows Server 2008\nWindows PE 2.0 Media - Windows Vista, Windows Sever 2008, Windows XP, Windows Server 2003"
+    },
+    {
+        "question": "What are the WinPE architectures does OS Deployment support?",
+        "answer": "OS Deployment supports only X86 and X64 WinPE architecture."
+    },
+    {
+        "question": "How is OS Deployment Licensed?",
+        "answer": "OS Deployment supports machine based licensing, that is the number of workstation and server machines on which you want to perform deployment. Here the licenses are tied to the machine's MAC address and once you purchase a license for a machine, you can perform any number of deployments on that machine. Depending on the operating system, you need to have either a workstation or a server license. E.g., to perform deployment on 100 workstation machines, you need to purchase 100 workstation licenses."
+    },
+    {
+        "question": "We have Dell and HP machines in our organisation. Does OS deployment support deployment of image on dissimilar hardware?",
+        "answer": "Yes, you can deploy images on dissimilar hardware as hardware-independent imaging is supported in OS deployment."
+    },
+    {
+        "question": "How to delete automatic collection's driver repository?",
+        "answer": "Automatic collection's driver repository is used to store the drivers which are collected during image creation process. If you have configured more than one of this repository, you can delete the repository from the product console itself. However, the repository will get deleted only in the UI and the network share has to be manually deleted by the user. It is always required to have at least one configured driver repository to store the automatically collected drivers."
+    },
+    {
+        "question": "How to delete the drivers from Repository?",
+        "answer": "From the product console, you will be able to delete the manual collection drivers and you will not be allowed to delete the automatic collection drivers. However, you can delete the drivers from both the repository directly from their respective network share."
+    },
+    {
+        "question": "When will the driver repositories get synced?",
+        "answer": "The manual collection's driver repository will get synced every 4 hours. For automatic collections, since the server is directly collecting the drivers, the repository will not be synced."
+    },
+    {
+        "question": "How to copy an image from one image repository to another?",
+        "answer": "Currently, the image has to be manually copied from one repository to another. After copying the image to a new repository, you have to modify the repository path in the image details. To modify the repository, select the image and view the image details. Here, near the image repository, select the edit icon to modify the repository path."
+    },
+    {
+        "question": "What are the features available under the Endpoint Security?",
+        "answer": "Vulnerability Management, Browser Security, Application Control, Device Control, Data Loss Prevention, and Bitlocker Management are the features under the Endpoint Security"
+    },
+    {
+        "question": "What editions of Endpoint Central can avail the Endpoint Security features?",
+        "answer": "Users of Security Edition of the Endpoint Central can avail the Endpoint Security features"
+    },
+    {
+        "question": "Can Endpoint Central MSP customers opt for the Endpoint Security features?",
+        "answer": "The Endpoint Security features of Vulnerability Management, BitLocker Management, and Browser Security are currently available in the Endpoint Central MSP Cloud version."
+    },
+    {
+        "question": "Can Endpoint Central Cloud customers opt for the Endpoint Security features?",
+        "answer": "Yes, the Endpoint Security features (excluding Endpoint DLP) are accessible to cloud users."
+    },
+    {
+        "question": "Does the Endpoint Central security edition include Anti-Ransomware?",
+        "answer": "No, Anti-Ransomware is currently available in early access for free across all editons. It will soon be available for licensing and won't be a part of the security edition."
+    },
+    {
+        "question": "How to identify servers? Are all Linux machines considered servers?",
+        "answer": "Currently, if the operating systems meet any of the following criteria, we consider them as server machines:\n\nIf the machine has Windows server operating system\nIf the machine with Red Hat Enterprise Linux OS has a Server subscription\nIf the machine has Oracle Linux OS\nIf the virtual machines have any of the above OS' installed\n\nWe recommend purchasing server licenses for any Linux machine when deploying them as servers within the organization."
+    },
+    {
+        "question": "How many servers can be managed with the free edition?",
+        "answer": "The free edition allows management of any number of servers, as long as the total number of endpoints does not exceed 25."
+    },
+    {
+        "question": "What happens to an existing customer upgrading to the latest build? Will server licensing take immediate effect?",
+        "answer": "Existing customers can upgrade to the latest build without any issues. Server licensing will only become active once the new license is applied. Until then, they can continue managing any number of servers."
+    },
+    {
+        "question": "How to identify servers from the Endpoint Central web console?",
+        "answer": "Navigate to Agent --> Computers in the console interface. Create a filter for Operating System with tags \"server\" and \"Oracle\". The Red Hat Enterprise Linux OS server machines cannot be identified using the web console as its subscription have to be checked."
+    },
+    {
+        "question": "What capabilities are offered in the server management domain by Endpoint Central?",
+        "answer": "Below are some capabilities that are offered in the server management space:\n- Correlate vulnerability intelligence with corresponding patches for seamless remediation.\n- Pre and post deployment scripts for orchestrating server patching.\n- Customizable self-service portal for patches and software for servers.\n- Customized deployment policies specific to servers.\n- Test and approve patches before deployment for ensuring quality and reliability.\n- Comprehensive support for server applications.\n- Efficient and customizable folder backup solutions.\n- Centralized registry controls for server configurations.\n- 12+ system tools for server maintenance.\n- Inbuilt remote control and troubleshooting capabilities.\n- Server OS imaging and deployment capabilities.\n- Unified product for server administrators and end-user computing, tailored with scope and technician segregation.\n- User logon details to keep in line with audit requirements.\n- Granular control over the services and processes running on a server."
+    },
+    {
+        "question": "Why the change in pricing?",
+        "answer": "Our understanding of the evolving server needs has led us to develop features specifically for server environments, making us one of the only three vendors in the Gartner Magic Quadrant with in-built capabilities for servers, without the need for integrations (Other than Microsoft and Ivanti). Even though the competitors have made server pricing an industry norm, we have waited over 2 decades to be rightfully able to claim separate pricing for servers. Over the years, we have stitched together a bundle of features natively into the product for a unified experience for users."
+    },
+    {
+        "question": "Which Windows versions do Anti-Ransomware and Next-Gen Antivirus support?",
+        "answer": "They are currently available for the Windows OS versions as follows: Windows 11, Windows 10, Windows 8.1 and Windows 8."
+    },
+    {
+        "question": "How to generate first detection in Next-Gen Antivirus?",
+        "answer": "To generate the first detection in NGAV, kindly follow the steps listed in this page. Also, navigate to the Settings tab and locate the \"Notification Settings\". Within this section, enable the \"User Device Alert Notification\" option to receive real-time notifications in the endpoints regarding security events."
+    },
+    {
+        "question": "Is Anti-Ransomware supported in macOS and Linux?",
+        "answer": "Anti-Ransomware currently supports only Windows operating system."
+    },
+    {
+        "question": "How to test the functionality of Anti-Ransomware?",
+        "answer": "Kindly follow the steps given on this page to run the Ransomware Simulator."
+    },
+    {
+        "question": "On what basis is the path of the bait files for the Decoy-file based protection in the endpoints defined?",
+        "answer": "Decoy files protect endpoints against ransomware and add layer of protection. A set of decoy files is present on all managed endpoints to serve as bait, and in the event of any suspicious activity, such as encryption of the decoy files, an immediate alert is issued, indicating a potential ransomware attack. Upon studying ransomware attacks, we have strategically placed these files in various folders across all managed endpoints. This proactive measure ensures that if the decoy files are encrypted, timely alerts are sent to the administrator for prompt response and mitigation. The bait files' names are \"database.docx\", \"ME.txt\", and \"screenshoot.jpg\"."
+    },
+    {
+        "question": "Are there any other detection methods besides Decoy-file based Detection?",
+        "answer": "Decoy/Bait file based detection is one of the several detection methods used by Anti-Ransomware. The core engine of detection is the behavior-based ransomware motive detection along with four accuracy improvement patented layers. For more information, kindly refer to this page."
+    },
+    {
+        "question": "Does Endpoint Central's Malware Protection work even when the device is offline?",
+        "answer": "Endpoint Central's Malware Protection offers offline native protection, allowing devices to be continuously monitored even when they are not connected to the network. This is possible since Malware Protection is not cloud dependent, and unlike traditional antivirus solutions, there is no need to update signature files on a regular basis. Refer here for more information."
+    },
+    {
+        "question": "Can Anti-Ransomware protect against file-less attacks?",
+        "answer": "File-less attacks are particularly difficult to detect since they leave little or no trace on the system. However, Anti-Ransomware's patented ML-assisted behavior detection technique makes it possible to detect file-less attacks on the network."
+    },
+    {
+        "question": "Does Anti-Ransomware scan the endpoints periodically?",
+        "answer": "No, Anti-Ransomware does not scan the systems periodically. Rather, it conducts a real-time analysis of the systems, continuously monitoring them in order to detect and report a ransomware attack as quickly as possible."
+    },
+    {
+        "question": "How much network bandwidth is consumed by the Anti-Ransomware agent?",
+        "answer": "The network bandwidth consumption of Anti-Ransomware is naught. This distinguishes Anti-Ransomware from other cloud-based EDR and Anti-Virus solutions because there is no need to often fetch signature database files, which cuts network traffic."
+    },
+    {
+        "question": "How to prevent the user from stopping/killing the Anti-Ransomware agent?",
+        "answer": "Anti-Ransomware employs anti-hook and anti-kill methods to keep users from killing the agent."
+    },
+    {
+        "question": "How can the administrator stop the Anti-Ransomware agent?",
+        "answer": "The administrator can stop the agent from the server console by disabling Anti-Ransomware."
+    },
+    {
+        "question": "Why is the recovered file a 3 hour older version?",
+        "answer": "Microsoft's Volume Shadow Copy Service (VSS) is utilized to obtain shadow copies of the data stored on your device, every three hours. As a rest, the recovered file is from the most recent backup cycle which could be 3 hours old."
+    },
+    {
+        "question": "Where is the data backup of Anti-Ransomware stored?",
+        "answer": "The backup files are stored on the hard-disk of the endpoint itself. These files are protected by a patented tamper-proof technology."
+    },
+    {
+        "question": "How much disk space does the Anti-Ransomware's VSS backup use?",
+        "answer": "By default, 10% of the disk space is used by the Windows VSS Service for backup functions."
+    },
+    {
+        "question": "What happens if there is insufficient disk space for the VSS backups?",
+        "answer": "When the Shadow Storage reaches its capacity, the oldest shadow copy will be deleted to accommodate the new one and optimize storage usage."
+    },
+    {
+        "question": "How to restore files encrypted by ransomware when Anti-Ransomware has not raised any alerts?",
+        "answer": "The files encrypted by ransomware can be restored as long as backup is available even if the incident was not raised as an alert."
+    }
+]
